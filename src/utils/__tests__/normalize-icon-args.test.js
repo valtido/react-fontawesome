@@ -2,7 +2,9 @@ import normalizeIconArgs from '../normalize-icon-args'
 
 describe('normalize icon args', () => {
   const PREFIX = 'far'
+  const FALPREFIX = 'fal'
   const NAME = 'circle'
+  const FULLNAME = 'fal-circle'
 
   test('handle null', () => {
     expect(normalizeIconArgs(null)).toBeNull()
@@ -28,6 +30,15 @@ describe('normalize icon args', () => {
     const DEFAULT_PREFIX = 'fas'
     expect(normalizeIconArgs(NAME)).toStrictEqual({
       prefix: DEFAULT_PREFIX,
+      iconName: NAME
+    })
+  })
+  
+  
+  test('handle prefixed string', () => {
+    const DEFAULT_PREFIX = 'fas'
+    expect(normalizeIconArgs(FULLNAME)).toStrictEqual({
+      prefix: FALPREFIX,
       iconName: NAME
     })
   })
